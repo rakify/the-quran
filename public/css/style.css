@@ -1,0 +1,33 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2%;
+}
+
+.button-success {
+    background: rgb(28, 184, 65);
+    /* this is a green */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221);
+    font-size: larger;
+    font-weight: 900;
+    /* this is a light blue */
+}
+
+.legend {
+    background: #EEE;
+    padding: 10px;
+    border: 1px solid #CCC;
+}
+
+fieldset {
+    background-color: #eeeeee;
+  }
+  
+  legend {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+  }
+  
