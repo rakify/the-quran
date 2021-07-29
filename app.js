@@ -34,7 +34,7 @@ app.use(express.json());
 let surahs = require('./routes/surahs')
 app.use('/',surahs);
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 app.listen(port,()=>{
     console.log("running at port 4000");
 })
