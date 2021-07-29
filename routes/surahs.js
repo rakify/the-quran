@@ -19,11 +19,9 @@ router.get('/:surah_number', async (req, res) => {
     let surahs = await Sura.findOne({
         number
     });
-
     let texts = await Text.find({
         surah_number: number
     }).sort('verse_number');
-    
     res.render('sura', {
         texts: texts,
         surahs: surahs,
