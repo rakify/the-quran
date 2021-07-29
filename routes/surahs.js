@@ -5,6 +5,7 @@ const router = express.Router();
 const Sura = require('../models/Sura')
 const Text = require('../models/Text')
 
+
 //Get index page
 router.get('/', async (req, res) => {
     let surahs = await Sura.find().sort('number');
@@ -12,6 +13,7 @@ router.get('/', async (req, res) => {
         surahs: surahs
     })
 })
+
 
 //Get single sura page
 router.get('/:surah_number', async (req, res) => {
