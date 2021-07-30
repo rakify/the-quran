@@ -21,33 +21,36 @@ router.get('/', async (req, res) => {
 
 //Get single sura page
 router.get('/:surah_number', async (req, res) => {
-    let number = parseInt(req.params.surah_number);
-    let surahs = await Surahs.findOne({
-        number
-    });
+    try {
+        let number = parseInt(req.params.surah_number);
+        let surahs = await Surahs.findOne({
+            number
+        });
 
-    // si for sahih internatial
-    let si = await SI.find({
-        surah_number: number
-    }).sort('verse_number');
+        // si for sahih internatial
+        let si = await SI.find({
+            surah_number: number
+        }).sort('verse_number');
 
-    // bn for bangla translation
-    let bn = await BN.find({
-        sura: number
-    }).sort('aya');
+        // bn for bangla translation
+        let bn = await BN.find({
+            sura: number
+        }).sort('aya');
 
-    // ya for yousuf ali translation
-    let ya = await YA.find({
-        sura: number
-    }).sort('aya');
+        // ya for yousuf ali translation
+        let ya = await YA.find({
+            sura: number
+        }).sort('aya');
 
-
-    res.render('sura', {
-        si: si,
-        bn: bn,
-        ya: ya,
-        surahs: surahs,
-    })
+        res.render('sura', {
+            si: si,
+            bn: bn,
+            ya: ya,
+            surahs: surahs,
+        })
+    } catch (err) {
+        res.sendStatus('404');
+    }
 })
 
 //exports
