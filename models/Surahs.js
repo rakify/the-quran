@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //url schema
-const SuraSchema = mongoose.Schema({
+const SurahsSchema = mongoose.Schema({
 
     number: {
         type: Number,
@@ -32,4 +32,4 @@ const SuraSchema = mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Sura', SuraSchema);
+module.exports = mongoose.model('Surahs', SurahsSchema);

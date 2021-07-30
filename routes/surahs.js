@@ -1,14 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-// import models
-const Sura = require('../models/Sura')
-const Text = require('../models/Text')
-
+// import Surahs model
+const Surahs = require('../models/Surahs')
+//import Sahih International model
+const SI = require('../models/SI')
+//import Bangla Translation model
+const BN = require('../models/BN')
+//import Yousuf Ali Translation model
+const YA = require('../models/YA')
 
 //Get index page
 router.get('/', async (req, res) => {
-    let surahs = await Sura.find().sort('number');
+    let surahs = await Surahs.find().sort('number');
     res.render('index', {
         surahs: surahs
     })
@@ -17,15 +21,31 @@ router.get('/', async (req, res) => {
 
 //Get single sura page
 router.get('/:surah_number', async (req, res) => {
-    let number = req.params.surah_number;
-    let surahs = await Sura.findOne({
+    let number = parseInt(req.params.surah_number);
+    let surahs = await Surahs.findOne({
         number
     });
-    let texts = await Text.find({
+
+    // si for sahih internatial
+    let si = await SI.find({
         surah_number: number
     }).sort('verse_number');
+
+    // bn for bangla translation
+    let bn = await BN.find({
+        sura: number
+    }).sort('aya');
+
+    // ya for yousuf ali translation
+    let ya = await YA.find({
+        sura: number
+    }).sort('aya');
+
+
     res.render('sura', {
-        texts: texts,
+        si: si,
+        bn: bn,
+        ya: ya,
         surahs: surahs,
     })
 })

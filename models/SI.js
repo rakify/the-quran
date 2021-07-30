@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-//url schema
-const TextSchema = mongoose.Schema({
+//Sahih International schema
+const SISchema = mongoose.Schema({
 
     surah_number: {
         type: Number,
@@ -24,4 +24,4 @@ const TextSchema = mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Text', TextSchema);
+module.exports = mongoose.model('SI', SISchema);
