@@ -17,8 +17,8 @@ body {
 
 .legend {
     background: #EEE;
-    padding: 10px;
-    border: 1px solid #CCC;
+    padding: 1px;
+    border: 1px #CCC;
 }
 
 fieldset {

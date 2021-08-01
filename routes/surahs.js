@@ -3,7 +3,7 @@ const router = express.Router();
 
 // import Surahs model
 const Surahs = require('../models/Surahs')
-//import Sahih International model
+//import Sahih International + arabic model
 const SI = require('../models/SI')
 //import Bangla Translation model
 const BN = require('../models/BN')
@@ -27,7 +27,7 @@ router.get('/:surah_number', async (req, res) => {
             number
         });
 
-        // si for sahih internatial
+        // si for sahih internatial + arabic
         let si = await SI.find({
             surah_number: number
         }).sort('verse_number');
@@ -49,7 +49,7 @@ router.get('/:surah_number', async (req, res) => {
             surahs: surahs,
         })
     } catch (err) {
-        res.sendStatus('404');
+        res.sendStatus('404');// default error
     }
 })
 
